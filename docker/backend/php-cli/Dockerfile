@@ -1,8 +1,9 @@
 FROM php:7.1-cli
 
-RUN apt-get update && apt-get install -y libmcrypt-dev zlib1g-dev libpq-dev wget \
+RUN apt-get update && apt-get install -y libmcrypt-dev zlib1g-dev libpq-dev libicu-dev wget\
     && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
-    && docker-php-ext-install mcrypt pdo_pgsql pgsql zip
+    && docker-php-ext-configure intl \
+    && docker-php-ext-install mcrypt pdo_pgsql pgsql zip intl
 
 RUN wget https://getcomposer.org/installer -O - -q | php -- --install-dir=/bin --filename=composer --quiet
 
