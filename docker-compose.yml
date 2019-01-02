@@ -2,36 +2,14 @@ version: '3'
 services:
   frontend-nginx:
     volumes:
-    - ./frontend:/var/www/frontend
+      - ./:/var/www/
     build:
       context: ./docker/frontend/nginx
     ports:
-    - "8888:80"
+      - "8888:80"
   frontend-nodejs:
-    image: node:10.11-jessie
     volumes:
-    - ./frontend:/var/www/frontend
-    working_dir: /var/www/frontend
-    tty: true
-
-  backend-nginx:
-    volumes:
-    - ./backend:/var/www/backend
+      - ./:/var/www/
     build:
-      context: ./docker/backend/nginx
-    ports:
-    - "8889:80"
-
-  backend-php-fpm:
-    volumes:
-    - ./backend:/var/www/backend
-    build:
-      context: ./docker/backend/php-fpm
-
-  backend-php-cli:
-    volumes:
-    - ./backend:/var/www/backend
-    build:
-      context: ./docker/backend/php-cli
-    working_dir: /var/www/backend
+      context: ./docker/frontend/nodejs
     tty: true
