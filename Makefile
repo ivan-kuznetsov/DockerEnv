@@ -30,5 +30,14 @@ install:
 watch:
 	$(docker_compose) run --rm "$(NODE_CONTAINER_NAME)" npm run watch
 
+dev:
+	$(docker_compose) run --rm "$(NODE_CONTAINER_NAME)" npm run dev
+
+prod:
+	$(docker_compose) run --rm "$(NODE_CONTAINER_NAME)" npm run prod
+
+deploy:
+	$(docker_compose) run --rm "$(NODE_CONTAINER_NAME)" npm run deploy
+
 test:
 	$(docker_compose) exec "$(PHP_CLI_CONTAINER_NAME)" composer test
