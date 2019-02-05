@@ -1,6 +1,6 @@
 #!/usr/bin/make
 
-SHELL = /bin/sh
+SHELL = /bin/bash
 
 PHP_CLI_CONTAINER_NAME := backend-php-cli
 NODE_CONTAINER_NAME := frontend-nodejs
@@ -21,7 +21,7 @@ restart:
 	$(docker_compose) restart
 
 shell:
-	$(docker_compose) exec "$(PHP_CLI_CONTAINER_NAME)" /bin/sh
+	$(docker_compose) exec "$(PHP_CLI_CONTAINER_NAME)" /bin/bash
 
 install:
 	$(docker_compose) exec "$(PHP_CLI_CONTAINER_NAME)" composer install --no-interaction --ansi --no-suggest
